@@ -2,7 +2,14 @@
 <html>
 <head>
 	<title>Train Scheduler</title>
+
+  <!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+  <!-- Moment JS -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
 </head>
 <body>
 
@@ -33,7 +40,7 @@
 			      </tr>
 			    </thead>
 			    <tbody id="table-body">
-
+              <!-- Train Information Goes Here -->
 			    </tbody>
 			  </table>
 
@@ -81,7 +88,7 @@
               </div>
 
               <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-warning" id="add-employee"><i class=""></i> Add Employee</button>
+              <button type="submit" class="btn btn-warning" id="add-train"><i class=""></i> Add Train</button>
 
             </form>
           </div>
@@ -91,7 +98,11 @@
 
 </div>
 
-<script type="text/javascript" src="app.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+<!-- JavaScript -->
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 
 </body>
 </html>
