@@ -47,19 +47,28 @@ $("#add-train").on("click", function(event) {
 // Firebase watcher + initial loader
 db.ref().on("child_added", function(childSnapshot) {
 
+	var tName = childSnapshot.val().train;
+	var tDestination = childSnapshot.val().destination;
+	var tTime = childSnapshot.val().firstTime;
+	var tFrequency = childSnapshot.val().frequency;
+	var tNextArr = "";
+	var tMinAway = "";
+
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + 
-  	childSnapshot.val().train + "</td><td>" + 
-  	childSnapshot.val().destination + "</td><td>" +
-  	childSnapshot.val().frequency + "</td><td>" + 
-  	"nxt arr" + "</td><td>" + 
-  	"mins away" + "</td></tr>");
+  	tName + "</td><td>" + 
+  	tDestination + "</td><td>" +
+  	tFrequency + "</td><td>" + 
+  	tNextArr + "</td><td>" + 
+  	tMinAway + "</td></tr>");
 
   console.log("-------from database----------------")
-  console.log(childSnapshot.val().train);
-  console.log(childSnapshot.val().destination);
-  console.log(childSnapshot.val().firstTime);
-  console.log(childSnapshot.val().frequency);
+  console.log(tName);
+  console.log(tDestination);
+  console.log(tTime);
+  console.log(tFrequency);
+  // console.log(tNextArr);
+  // console.log(tMinAway); 
   console.log(childSnapshot.val().dateAdded);
 
 });
