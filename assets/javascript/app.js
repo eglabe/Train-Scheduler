@@ -47,6 +47,14 @@ $("#add-train").on("click", function(event) {
 // Firebase watcher + initial loader
 db.ref().on("child_added", function(childSnapshot) {
 
+  // Add each train's data into the table
+  $("#train-table > tbody").append("<tr><td>" + 
+  	childSnapshot.val().train + "</td><td>" + 
+  	childSnapshot.val().destination + "</td><td>" +
+  	childSnapshot.val().frequency + "</td><td>" + 
+  	"nxt arr" + "</td><td>" + 
+  	"mins away" + "</td></tr>");
+
   console.log("-------from database----------------")
   console.log(childSnapshot.val().train);
   console.log(childSnapshot.val().destination);
@@ -55,8 +63,6 @@ db.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val().dateAdded);
 
 });
-
-// display db data in html
 
 // verify input data 
 
