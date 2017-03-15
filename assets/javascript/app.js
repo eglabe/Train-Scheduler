@@ -1,4 +1,4 @@
-$("#standard-time").html(moment().format("hh:mm:ss"));
+$("#standard-time").html(moment().format("hh:mm:ss a"));
 $("#military-time").html(moment().format("HH:mm:ss"));
 
 // Initialize Firebase
@@ -50,7 +50,7 @@ db.ref().on("child_added", function(childSnapshot) {
 	var tFrequency = childSnapshot.val().frequency;
 
 	console.log("---------- train math -----------")
-	var firstTimeConverted = moment(tTime, "HH:mm");
+	var firstTimeConverted = moment(tTime, "HH:mm").subtract(1, "days");
 	console.log("converted " + firstTimeConverted);
 
 	var currentTime = moment().format("HH:mm");
@@ -78,7 +78,8 @@ db.ref().on("child_added", function(childSnapshot) {
   	moment(nextTrain).format("HH:mm") + "</td><td>" + 
   	minTillTrain 
   	// + "</td><td>" +
-  	// "<button id='remove-btn'>Remove</button>" 
+  	// "<button type='button' class='btn btn-info btn-xs' id='update-btn'>Update</button>" + " " +
+  	// "<button type='button' class='btn btn-danger btn-xs' id='remove-btn'>Remove</button>" 
   	+ "</td></tr>");
 
   console.log("-------from database----------------")
@@ -89,6 +90,11 @@ db.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val().dateAdded);
 
 });
+
+
+// $("#update-btn").on("click", function(event) {
+
+// });
 
 // $("#remove-btn").on("click", function(event) {
 
