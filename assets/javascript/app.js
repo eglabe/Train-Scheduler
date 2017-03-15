@@ -1,3 +1,6 @@
+$("#standard-time").html(moment().format("hh:mm:ss"));
+$("#military-time").html(moment().format("HH:mm:ss"));
+
 // Initialize Firebase
 var config = {
 apiKey: "AIzaSyAsCGHC0nOCZiyvLc3Bnc46zMgEMeK0_MA",
@@ -25,12 +28,6 @@ $("#add-train").on("click", function(event) {
 	destination = $("#destination").val().trim();
 	firstTime = $("#first-train").val().trim();
 	frequency = $("#frequency").val().trim();
-
-	console.log("-----user input--------------------")
-	console.log(train);
-	console.log(destination);
-	console.log(firstTime);
-	console.log(frequency);
 
   // Code for the database push
   db.ref().push({
@@ -79,7 +76,10 @@ db.ref().on("child_added", function(childSnapshot) {
   	tDestination + "</td><td>" +
   	tFrequency + "</td><td>" + 
   	moment(nextTrain).format("HH:mm") + "</td><td>" + 
-  	minTillTrain + "</td></tr>");
+  	minTillTrain 
+  	// + "</td><td>" +
+  	// "<button id='remove-btn'>Remove</button>" 
+  	+ "</td></tr>");
 
   console.log("-------from database----------------")
   console.log(tName);
@@ -90,5 +90,8 @@ db.ref().on("child_added", function(childSnapshot) {
 
 });
 
-$("#standard-time").html(moment().format("hh:mm:ss"));
-$("#military-time").html(moment().format("HH:mm:ss"));
+// $("#remove-btn").on("click", function(event) {
+
+// db.ref().child().remove();
+
+// });
