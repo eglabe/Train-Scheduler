@@ -86,28 +86,9 @@ db.ref().on("child_added", function(childSnapshot) {
   console.log(tDestination);
   console.log(tTime);
   console.log(tFrequency);
-  // console.log(tNextArr);
-  // console.log(tMinAway); 
   console.log(childSnapshot.val().dateAdded);
 
 });
 
-// verify input data 
-
-
-
-	// var firstTimeConverted = moment(firstTime, "HH:mm");
-	// console.log(firstTimeConverted);
-
-	// var currentTime = moment().format("HH:mm");
-	// console.log(currentTime);
-
-	// var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
-
-	// var remainder = timeDiff % frequency;
-
-	// var minTillTrain = frequency - remainder;
-
-	// var nextTrain = moment().add(minTillTrain, "minutes");
-
-
+$("#standard-time").html(moment().format("hh:mm:ss"));
+$("#military-time").html(moment().format("HH:mm:ss"));
