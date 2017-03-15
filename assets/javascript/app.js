@@ -8,7 +8,7 @@ messagingSenderId: "749265162273"
 };
 firebase.initializeApp(config);
 
-// Initial variables
+// Initial variables, to be set by user
 var db = firebase.database();
 
 var train = "";
@@ -51,16 +51,35 @@ db.ref().on("child_added", function(childSnapshot) {
 	var tDestination = childSnapshot.val().destination;
 	var tTime = childSnapshot.val().firstTime;
 	var tFrequency = childSnapshot.val().frequency;
-	var tNextArr = "";
-	var tMinAway = "";
+
+	console.log("---------- train math -----------")
+	var firstTimeConverted = moment(tTime, "HH:mm");
+	console.log("converted " + firstTimeConverted);
+
+	var currentTime = moment().format("HH:mm");
+	console.log("current time " + currentTime);
+
+	var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
+	console.log("Difference in time: " + timeDiff);
+
+	var remainder = timeDiff % tFrequency;
+	console.log("remainder " + remainder);
+
+	var minTillTrain = tFrequency - remainder;
+	console.log("Minutes till train: " + minTillTrain);
+
+	var nextTrain = moment().add(minTillTrain, "minutes");
+	console.log("Next train arrives: " + moment(nextTrain).format("HH:mm"));
+	console.log("----------^train math^-----------");
+
 
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + 
   	tName + "</td><td>" + 
   	tDestination + "</td><td>" +
   	tFrequency + "</td><td>" + 
-  	tNextArr + "</td><td>" + 
-  	tMinAway + "</td></tr>");
+  	moment(nextTrain).format("HH:mm") + "</td><td>" + 
+  	minTillTrain + "</td></tr>");
 
   console.log("-------from database----------------")
   console.log(tName);
@@ -74,5 +93,21 @@ db.ref().on("child_added", function(childSnapshot) {
 });
 
 // verify input data 
+
+
+
+	// var firstTimeConverted = moment(firstTime, "HH:mm");
+	// console.log(firstTimeConverted);
+
+	// var currentTime = moment().format("HH:mm");
+	// console.log(currentTime);
+
+	// var timeDiff = moment().diff(moment(firstTimeConverted), "minutes");
+
+	// var remainder = timeDiff % frequency;
+
+	// var minTillTrain = frequency - remainder;
+
+	// var nextTrain = moment().add(minTillTrain, "minutes");
 
 
