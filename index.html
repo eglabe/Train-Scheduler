@@ -5,6 +5,8 @@
 
   <!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/flatly/bootstrap.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <!-- Moment JS -->
   <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
   <!-- jQuery -->
@@ -13,18 +15,22 @@
 </head>
 <body>
 
-  <div class="container">
 
-    <!-- Jumbotron for Title -->
-    <div class="jumbotron" style="background-color: teal ; color: white;">
-      <h1 class="text-center"><strong><i class=""></i>Where Are We Going?</strong></h1>
-      <hr>
+
+  <!-- Title -->
+  <div id="header" class="container-fluid">
+    <h1 id="title" class="text-center pull-left"><strong>Trans-Continental Railway</strong></h1>
+    <div id="current-time-div" class="pull-right">
       <h4 class="text-center"><em>Current time:</em></h4>
       <h4 class="text-center" id="standard-time"></h4>
       <h4 class="text-center" id="military-time"></h4>
     </div>
+  </div>
 
-    <div class="row">
+  <div class="container">
+
+    <!-- Current Train Schedule Section -->
+    <div class="row pull-left">
       <div class="col-sm-12">
         <br>
         <!-- Table -->
@@ -53,11 +59,12 @@
       </div>
     </div>
 
-    <div class="row">
+    <!-- Add Train Section -->
+    <div class="row pull-right">
       <div class="col-sm-12">
         <br>
         <!-- First panel is for handling the search parameters -->
-        <div class="panel panel-warning">
+        <div class="panel panel-danger">
           <div class="panel-heading">
             <h3 class="panel-title"><strong><i class=""></i>Add Train</strong></h3>
           </div>
@@ -92,7 +99,7 @@
               </div>
 
               <!-- Here we have our final submit button -->
-              <button type="submit" class="btn btn-warning" id="add-train"><i class=""></i> Add Train</button>
+              <button type="submit" class="btn btn-sm btn-danger" id="add-train"><i class=""></i> Add Train</button>
 
             </form>
           </div>
