@@ -1,12 +1,12 @@
 #header {
-	background-color: navy; 
+	background-color: #1a242f; 
 	color: white;
 }
 
 #title {
-	margin-left: 50px;
+	margin-left: 150px;
 }
 
 #current-time-div {
-	margin-right: 50px;
+	margin-right: 150px;
 }
