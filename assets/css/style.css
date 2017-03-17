@@ -3,10 +3,6 @@
 	color: white;
 }
 
-#title {
-	margin-left: 150px;
-}
-
-#current-time-div {
-	margin-right: 150px;
+.form-control {
+	height: 35px;
 }
