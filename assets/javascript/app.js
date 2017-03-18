@@ -1,5 +1,10 @@
+// Function and interval to have the current time update every second
+var clock = setInterval(function(){getTime()}, 1000);
+
+function getTime() {
 $("#standard-time").html(moment().format("hh:mm:ss a"));
 $("#military-time").html(moment().format("HH:mm:ss"));
+}
 
 // Initialize Firebase
 var config = {
@@ -24,6 +29,7 @@ $("#add-train").on("click", function(event) {
 
 	event.preventDefault();
 
+	// Retrieves user input
 	train = $("#train-name").val().trim();
 	destination = $("#destination").val().trim();
 	firstTime = $("#first-train").val().trim();
@@ -44,11 +50,13 @@ $("#add-train").on("click", function(event) {
 // Firebase watcher + initial loader
 db.ref().on("child_added", function(childSnapshot) {
 
+	// Puts data from db in a variable
 	var tName = childSnapshot.val().train;
 	var tDestination = childSnapshot.val().destination;
 	var tTime = childSnapshot.val().firstTime;
 	var tFrequency = childSnapshot.val().frequency;
 
+	// Calculates next train time and minutes until next train
 	console.log("---------- train math -----------")
 	var firstTimeConverted = moment(tTime, "HH:mm").subtract(1, "days");
 	console.log("converted " + firstTimeConverted);
@@ -81,13 +89,6 @@ db.ref().on("child_added", function(childSnapshot) {
   	// "<button type='button' class='btn btn-info btn-xs' id='update-btn'>Update</button>" + " " +
   	// "<button type='button' class='btn btn-danger btn-xs' id='remove-btn'>Remove</button>" 
   	+ "</td></tr>");
-
-  console.log("-------from database----------------")
-  console.log(tName);
-  console.log(tDestination);
-  console.log(tTime);
-  console.log(tFrequency);
-  console.log(childSnapshot.val().dateAdded);
 
 });
 
