@@ -2,8 +2,8 @@
 var clock = setInterval(function(){getTime()}, 1000);
 
 function getTime() {
-$("#standard-time").html(moment().format("hh:mm:ss a"));
-$("#military-time").html(moment().format("HH:mm:ss"));
+	$("#standard-time").html(moment().format("hh:mm:ss a"));
+	$("#military-time").html(moment().format("HH:mm:ss"));
 }
 
 // Initialize Firebase
@@ -47,6 +47,10 @@ $("#add-train").on("click", function(event) {
   });	
 });
 
+// Function and interval to update minutes till next train
+// var update = setInterval(function(){recalculate()}, 1000 * 60);
+// function recalculate() {}
+
 // Firebase watcher + initial loader
 db.ref().on("child_added", function(childSnapshot) {
 
@@ -77,7 +81,6 @@ db.ref().on("child_added", function(childSnapshot) {
 	console.log("Next train arrives: " + moment(nextTrain).format("HH:mm"));
 	console.log("----------^train math^-----------");
 
-
   // Add each train's data into the table
   $("#train-table > tbody").append("<tr><td>" + 
   	tName + "</td><td>" + 
@@ -92,13 +95,10 @@ db.ref().on("child_added", function(childSnapshot) {
 
 });
 
-
+// Buttons to update and remove train information
 // $("#update-btn").on("click", function(event) {
-
 // });
 
 // $("#remove-btn").on("click", function(event) {
-
-// db.ref().child().remove();
-
+	// db.ref().child().remove();
 // });
