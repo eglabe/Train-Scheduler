@@ -1,2 +1,2 @@
 # Train-Scheduler
-HW assignment: Create a train schedule application
+A train schedule that can be contributed to using a firebase database to store the given information
